@@ -1,21 +1,32 @@
-// Select and Create Variables
+// Select Variables
 const startBtn = document.querySelector("#startBtn");
 const pauseBtn = document.querySelector("#pauseBtn");
-const durationInput = document.querySelector("#duration");
+const timerInput = document.querySelector("#duration");
 
-// Create Timer Class
+// Create Class Object
 class Timer {
-	constructor(startBtn, pauseBtn, durationInput) {
-		[startBtn, pauseBtn, durationInput] === this;
+	constructor(startBtn, pauseBtn, timerInput) {
+		console.log(this);
 
-		// Event Listener
-		startBtn.addEventListener("click", this.start);
+		[startBtn, pauseBtn, timerInput] === this;
+
+		startBtn.addEventListener("click", this.startTimer);
+		pauseBtn.addEventListener("click", this.pauseTimer);
 	}
 
-	start() {
-		console.log("We are Starting!");
-	}
+	startTimer = () => {
+		this.tick();
+		this.timerInterval = setInterval(this.tick, 1000);
+	};
+
+	pauseTimer = () => {
+		clearInterval(this.timerInterval);
+	};
+
+	tick = () => {
+		console.log("Tick!");
+	};
 }
 
 // Create Class Instance
-const timer = new Timer(startBtn, pauseBtn, durationInput);
+const timerInstance = new Timer(startBtn, pauseBtn, timerInput);
