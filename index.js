@@ -24,8 +24,16 @@ class Timer {
 	};
 
 	tick = () => {
-		console.log("Tick!");
+		this.timeInputRemaining = this.timeInputRemaining - 1;
 	};
+
+	get timeInputRemaining() {
+		return parseFloat(timerInput.value);
+	}
+
+	set timeInputRemaining(time) {
+		return (timerInput.value = time);
+	}
 }
 
 // Create Class Instance
