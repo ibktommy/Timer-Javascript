@@ -6,8 +6,6 @@ const timerInput = document.querySelector("#duration");
 // Create Class Object
 class Timer {
 	constructor(startBtn, pauseBtn, timerInput) {
-		console.log(this);
-
 		[startBtn, pauseBtn, timerInput] === this;
 
 		startBtn.addEventListener("click", this.startTimer);
@@ -24,7 +22,11 @@ class Timer {
 	};
 
 	tick = () => {
-		this.timeInputRemaining = this.timeInputRemaining - 1;
+		if (this.timeInputRemaining <= 0) {
+			this.pauseTimer();
+		} else {
+			this.timeInputRemaining = this.timeInputRemaining - 1;
+		}
 	};
 
 	get timeInputRemaining() {
@@ -32,6 +34,7 @@ class Timer {
 	}
 
 	set timeInputRemaining(time) {
+		console.log(time);
 		return (timerInput.value = time);
 	}
 }
