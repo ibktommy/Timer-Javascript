@@ -5,14 +5,21 @@ const timerInput = document.querySelector("#duration");
 
 // Create Class Object
 class Timer {
-	constructor(startBtn, pauseBtn, timerInput) {
+	constructor(startBtn, pauseBtn, timerInput, setOfCallbacks) {
 		[startBtn, pauseBtn, timerInput] === this;
+
+		if (setOfCallbacks) {
+			this.onStart = setOfCallbacks.onStart;
+		}
 
 		startBtn.addEventListener("click", this.startTimer);
 		pauseBtn.addEventListener("click", this.pauseTimer);
 	}
 
 	startTimer = () => {
+		if (this.onStart) {
+			this.onStart();
+		}
 		this.tick();
 		this.timerInterval = setInterval(this.tick, 1000);
 	};
@@ -40,4 +47,10 @@ class Timer {
 }
 
 // Create Class Instance
-const timerInstance = new Timer(startBtn, pauseBtn, timerInput);
+const timerInstance = new Timer(startBtn, pauseBtn, timerInput, {
+	onStart() {
+		console.log("Timer Started!");
+	},
+	onTick() {},
+	onComplete() {},
+});
