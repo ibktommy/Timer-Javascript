@@ -15,10 +15,10 @@ class Timer {
 
 	startTimer = () => {
 		if (this.onStart) {
-			this.onStart();
+			this.onStart(this.timeInputRemaining);
 		}
 		this.tick();
-		this.timerInterval = setInterval(this.tick, 1000);
+		this.timerInterval = setInterval(this.tick, 50);
 	};
 
 	pauseTimer = () => {
@@ -32,9 +32,9 @@ class Timer {
 				this.onComplete();
 			}
 		} else {
-			this.timeInputRemaining = this.timeInputRemaining - 1;
+			this.timeInputRemaining = this.timeInputRemaining - 0.05;
 			if (this.onTick) {
-				this.onTick();
+				this.onTick(this.timeInputRemaining);
 			}
 		}
 	};
@@ -44,7 +44,6 @@ class Timer {
 	}
 
 	set timeInputRemaining(time) {
-		console.log(time);
-		return (timerInput.value = time);
+		return (timerInput.value = time.toFixed(2));
 	}
 }
