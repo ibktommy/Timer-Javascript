@@ -23,13 +23,15 @@ class Timer {
 
 	pauseTimer = () => {
 		clearInterval(this.timerInterval);
+		console.log("PAUSED");
 	};
 
 	tick = () => {
 		if (this.timeInputRemaining <= 0) {
 			this.pauseTimer();
 			if (this.onComplete) {
-				this.onComplete();
+				this.onComplete(this.timeInputRemaining);
+				console.log("STOP");
 			}
 		} else {
 			this.timeInputRemaining = this.timeInputRemaining - 0.05;

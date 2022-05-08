@@ -20,6 +20,6 @@ const timerInstance = new Timer(startBtn, pauseBtn, timerInput, {
 		circle.setAttribute("stroke-dashoffset", (perimeter * timeInputRemaining) / duration - perimeter);
 	},
 	onComplete() {
-		console.log("Timer is Complete");
+		console.log("Timer is Completed");
 	},
 });
