@@ -17,14 +17,17 @@ body {
 	justify-content: center;
 	align-items: center;
 	position: relative;
+	overflow-x: hidden;
 }
 
 h1 {
 	position: fixed;
-	top: 5rem;
-	font-size: 8rem;
+	top: 2rem;
+	font-size: 5rem;
 	font-weight: 400;
 	letter-spacing: 0.5rem;
+	text-align: center;
+	line-height: 1;
 }
 
 .controls-container {
