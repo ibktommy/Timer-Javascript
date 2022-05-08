@@ -3,6 +3,7 @@ const startBtn = document.querySelector("#startBtn");
 const pauseBtn = document.querySelector("#pauseBtn");
 const timerInput = document.querySelector("#duration");
 const circle = document.querySelector("circle");
+const para = document.querySelector(".para");
 
 // Calculate Perimeter of Circle
 const perimeter = circle.getAttribute("r") * 2 * Math.PI;
@@ -20,6 +21,14 @@ const timerInstance = new Timer(startBtn, pauseBtn, timerInput, {
 		circle.setAttribute("stroke-dashoffset", (perimeter * timeInputRemaining) / duration - perimeter);
 	},
 	onComplete() {
-		console.log("Timer is Completed");
+		startBtn.style.opacity = 0.4;
+		pauseBtn.style.opacity = 0.4;
+		para.classList.remove("hidden");
+		para.textContent = "TIMER IS COMPLETE";
+		setTimeout(() => {
+			para.classList.add("hidden");
+			startBtn.style.opacity = 1;
+			pauseBtn.style.opacity = 1;
+		}, 1500);
 	},
 });
