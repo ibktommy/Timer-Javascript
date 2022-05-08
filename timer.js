@@ -29,7 +29,7 @@ class Timer {
 		if (this.timeInputRemaining <= 0) {
 			this.pauseTimer();
 			if (this.onComplete) {
-				this.onComplete(this.timeInputRemaining);
+				this.onComplete();
 			}
 		} else {
 			this.timeInputRemaining = this.timeInputRemaining - 0.05;

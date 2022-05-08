@@ -17,14 +17,17 @@ const timerInstance = new Timer(startBtn, pauseBtn, timerInput, {
 	onStart(totalDuration) {
 		duration = totalDuration;
 	},
+
 	onTick(timeInputRemaining) {
 		circle.setAttribute("stroke-dashoffset", (perimeter * timeInputRemaining) / duration - perimeter);
 	},
+
 	onComplete() {
 		startBtn.style.opacity = 0.4;
 		pauseBtn.style.opacity = 0.4;
 		para.classList.remove("hidden");
 		para.textContent = "TIMER IS COMPLETE";
+
 		setTimeout(() => {
 			para.classList.add("hidden");
 			startBtn.style.opacity = 1;
