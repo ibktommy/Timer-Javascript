@@ -68,8 +68,7 @@ h1 {
 
 .btn button i {
 	font-size: 4rem;
-	pointer-events: none;
-	user-select: none;
+	cursor: pointer;
 }
 
 .para {
